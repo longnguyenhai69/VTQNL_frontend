@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { auth } from '../lib/firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { auth, db } from '../lib/firebase';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
@@ -15,15 +15,8 @@ export function AuthProvider({ children }) {
       if (firebaseUser) {
         setUser(firebaseUser);
         try {
-          const token = await firebaseUser.getIdToken();
-          const res = await fetch(`${BASE_URL}/api/me`, {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          if (res.ok) {
-            setProfile(await res.json());
-          } else {
-            setProfile(null);
-          }
+          const snap = await getDoc(doc(db, 'users', firebaseUser.uid));
+          setProfile(snap.exists() ? snap.data() : null);
         } catch {
           setProfile(null);
         }
