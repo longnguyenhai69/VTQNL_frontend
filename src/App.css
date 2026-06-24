@@ -1,0 +1,371 @@
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+/* Nút xuất Excel */
+.btn-export {
+  padding: 8px 18px;
+  background: #059669;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+  box-shadow: 0 1px 3px rgba(5,150,105,.3);
+  white-space: nowrap;
+}
+.btn-export:hover { background: #047857; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(5,150,105,.3); }
+
+/* Nhóm công trường */
+.cong-truong-group { margin-bottom: 28px; }
+
+.cong-truong-group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  background: linear-gradient(135deg, #eef2ff, #f0f9ff);
+  border-left: 4px solid #4f46e5;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(79,70,229,.08);
+}
+
+.cong-truong-group-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e1b4b;
+}
+
+.group-count {
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #4f46e5;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(2px);
+}
+
+.modal-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.18), 0 8px 20px rgba(0,0,0,.08);
+  border: 1px solid rgba(255,255,255,.6);
+}
+
+.modal-card h2 {
+  margin: 0 0 22px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1f36;
+  letter-spacing: -.2px;
+}
+
+.table-wrapper { overflow-x: auto; border-radius: 10px; border: 1px solid #e5e9f2; }
+
+/* Tiến độ phiếu */
+.tien-do {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  padding: 12px 0 4px;
+  overflow-x: auto;
+}
+
+.tien-do-buoc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  min-width: 80px;
+}
+
+.tien-do-buoc:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: #e5e7eb;
+  z-index: 0;
+}
+
+.tien-do-buoc.done:not(:last-child)::after { background: #10b981; }
+.tien-do-buoc.rejected:not(:last-child)::after { background: #ef4444; }
+
+.tien-do-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  z-index: 1;
+  position: relative;
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.tien-do-buoc.done .tien-do-icon    { background: #10b981; color: #fff; }
+.tien-do-buoc.rejected .tien-do-icon { background: #ef4444; color: #fff; }
+.tien-do-buoc.active .tien-do-icon  { background: #f59e0b; color: #fff; }
+
+.tien-do-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6px;
+  gap: 2px;
+  text-align: center;
+}
+
+.tien-do-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.tien-do-nguoi {
+  font-size: 10px;
+  color: #6b7280;
+}
+
+.tien-do-ghichu {
+  font-size: 10px;
+  color: #9ca3af;
+  font-style: italic;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.phieu-card-tiendo {
+  padding: 0 16px 8px;
+  border-top: 1px solid #f3f4f6;
+  margin-top: 8px;
+}
+
+.phieu-card-expandable .phieu-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.expand-toggle {
+  margin-left: auto;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.phieu-card-detail {
+  padding: 12px 16px 16px;
+  border-top: 1px dashed #e5e7eb;
+  margin-top: 4px;
+}
